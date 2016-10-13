@@ -3,13 +3,13 @@ package ua.edu.ucu.tempseries;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
-    int numberTemperature;
-    int p;
-    double avarageNum;
-    double sum;
-    double min1;
-    double max1;
-    double closestToZero;
+    private int numberTemperature;
+    private int p;
+    private double avarageNum;
+    private double sum;
+    private double min1;
+    private double max1;
+    private double closestToZero;
     private double[] temperatureSeries;
 
     public TemperatureSeriesAnalysis() { }
@@ -156,8 +156,8 @@ public class TemperatureSeriesAnalysis {
     }
 
     public int addTemps(double... temps) {
-        double[] newTempSeries = new double[Math.max(temperatureSeries.length+temps.length, //
-                temperatureSeries.length * 2)];
+        double[] newTempSeries = new double[Math.max( //
+                temperatureSeries.length+temps.length, temperatureSeries.length * 2)];
         for (int i = 0; i < temps.length; i++) {
             newTempSeries[i] = temps[i];
         }
