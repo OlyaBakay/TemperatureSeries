@@ -1,7 +1,6 @@
 package ua.edu.ucu.tempseries;
 
 import java.util.InputMismatchException;
-import java.util.List;
 
 public class TemperatureSeriesAnalysis {
     int numberTemperature;
@@ -44,7 +43,8 @@ public class TemperatureSeriesAnalysis {
             for (double i : temperatureSeries) {
                 sum += (i - average())*(i - average());
             }
-            double quadraticDeviation = Math.sqrt(sum / temperatureSeries.length);
+            double quadraticDeviation = //
+                    Math.sqrt(sum / temperatureSeries.length);
             return Math.round(quadraticDeviation);
         }
     }
@@ -85,7 +85,8 @@ public class TemperatureSeriesAnalysis {
             for (int i = 1; i < temperatureSeries.length; i++) {
                 if (Math.abs(temperatureSeries[i]) < Math.abs(closestToZero)) {
                     closestToZero = temperatureSeries[i];
-                } else if (Math.abs(temperatureSeries[i]) == Math.abs(closestToZero) && temperatureSeries[i] > 0) {
+                } else if (Math.abs(temperatureSeries[i]) == //
+                        Math.abs(closestToZero) && temperatureSeries[i] > 0) {
                     closestToZero = temperatureSeries[i];
                 }
             }
@@ -115,7 +116,8 @@ public class TemperatureSeriesAnalysis {
 
     public double[] findTempsLessThen(double tempValue) {
         double[] newList1 = new double[temperatureSeries.length];
-        for (int i = 0; i < temperatureSeries.length && temperatureSeries[i] < tempValue; i++) {
+        for (int i = 0; i < temperatureSeries.length //
+                && temperatureSeries[i] < tempValue; i++) {
             p++;
             newList1[i] = temperatureSeries[i];
         }
@@ -148,14 +150,15 @@ public class TemperatureSeriesAnalysis {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         } else {
-            final TempSummaryStatistics summaryStatistics = new TempSummaryStatistics(this.average(), this.deviation(),
+            final TempSummaryStatistics summaryStatistics = //
+                    new TempSummaryStatistics(this.average(), this.deviation(),
                     this.min(), this.max());
             return summaryStatistics;
         }
     }
 
     public int addTemps(double... temps) {
-        double[] newTempSeries = new double[Math.max(temperatureSeries.length+temps.length,
+        double[] newTempSeries = new double[Math.max(temperatureSeries.length+temps.length, //
                 temperatureSeries.length * 2)];
         for (int i = 0; i < temps.length; i++) {
             newTempSeries[i] = temps[i];
