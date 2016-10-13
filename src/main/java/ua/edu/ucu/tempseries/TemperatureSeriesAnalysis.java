@@ -4,24 +4,25 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 public class TemperatureSeriesAnalysis {
-    private double[] temperatureSeries;
+    int numberTemperature;
+    int p;
     double avarageNum;
     double sum;
     double min1;
     double max1;
     double closestToZero;
-    int numberTemperature;
-    int p;
+    private double[] temperatureSeries;
+
 
 
     public TemperatureSeriesAnalysis() { }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         this.temperatureSeries = temperatureSeries;
-        for (double i: temperatureSeries){
-            if (i<-273){
+        for (double i: temperatureSeries) {
+            if (i < -273) {
                 throw new InputMismatchException();
-            }}
+            } }
     }
 
     public double average() {
@@ -41,9 +42,9 @@ public class TemperatureSeriesAnalysis {
             throw new IllegalArgumentException();
         } else {
             for (double i : temperatureSeries) {
-                sum += Math.pow(i - average(), 2);
+                sum += (i - average())*(i - average());
             }
-            double quadraticDeviation = Math.sqrt(sum / temperatureSeries.length) ;
+            double quadraticDeviation = Math.sqrt(sum / temperatureSeries.length);
             return Math.round(quadraticDeviation);
         }
     }
@@ -96,17 +97,17 @@ public class TemperatureSeriesAnalysis {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         }
-        if (temperatureSeries.length == 1){
+        if (temperatureSeries.length == 1) {
             return temperatureSeries[0];
         }
         else {
             double idx = 0;
             double distance1 = Math.abs(temperatureSeries[0] - tempValue);
-            for(int i=1; i<temperatureSeries.length; i++){
+            for(int i = 1; i < temperatureSeries.length; i++) {
                 double distance2 = Math.abs(temperatureSeries[i] - tempValue);
-                if(distance1 > distance2){
+                if(distance1 > distance2) {
                     idx = temperatureSeries[i];
-                    distance1 = distance2 ;
+                    distance1 = distance2;
                 }
             }
             return idx;
@@ -114,36 +115,34 @@ public class TemperatureSeriesAnalysis {
 
     public double[] findTempsLessThen(double tempValue) {
         double[] newList1 = new double[temperatureSeries.length];
-        for (int i=0; i < temperatureSeries.length && temperatureSeries[i] < tempValue; i++){
+        for (int i = 0; i < temperatureSeries.length && temperatureSeries[i] < tempValue; i++) {
             p++;
             newList1[i] = temperatureSeries[i];
         }
         double[] newList2 = new double[p];
-        for (int i=0; i<newList2.length; i++)
+        for (int i = 0; i < newList2.length; i++) {
             newList2[i] = newList1[i];
+        }
         return newList2;
+
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
         int k =0;
-        for (int i=0;i < temperatureSeries.length; i++) {
+        for (int i = 0; i < temperatureSeries.length; i++) {
             if  (temperatureSeries[i] >= tempValue){
                 k++;}
         }
         double[] newList1 = new double[k];
         int c = 0;
-        for (int i=0;i < temperatureSeries.length; i++) {
+        for (int i = 0; i < temperatureSeries.length; i++) {
             if(temperatureSeries[i] >= tempValue){
                 newList1[c] = temperatureSeries[i];
                 c++;
             }
 
         }
-        for(double i:newList1){
-            System.out.println(i);
-        }
-        return newList1;
-    }
+        return newList1; }
 
     public TempSummaryStatistics summaryStatistics() {
         if (temperatureSeries.length == 0) {
