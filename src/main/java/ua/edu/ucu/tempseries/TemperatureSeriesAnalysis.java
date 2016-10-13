@@ -131,7 +131,7 @@ public class TemperatureSeriesAnalysis {
         int k = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
             if  (temperatureSeries[i] >= tempValue) {
-                k++ ; }
+                k++; }
         }
         double[] newList1 = new double[k];
         int c = 0;
