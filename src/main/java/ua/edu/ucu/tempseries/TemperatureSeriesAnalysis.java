@@ -148,7 +148,7 @@ public class TemperatureSeriesAnalysis {
 
     public int addTemps(double... temps) {
         double[] newTempSeries = new double[Math.max(//
-                temperatureSeries.length+temps.length,//
+                temperatureSeries.length+temps.length, //
                 temperatureSeries.length * 2)];
         for (int i = 0; i < temps.length; i++) {
             newTempSeries[i] = temps[i];
