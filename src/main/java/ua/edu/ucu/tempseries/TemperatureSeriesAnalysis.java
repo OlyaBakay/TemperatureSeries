@@ -12,8 +12,6 @@ public class TemperatureSeriesAnalysis {
     double closestToZero;
     private double[] temperatureSeries;
 
-
-
     public TemperatureSeriesAnalysis() { }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
@@ -104,15 +102,15 @@ public class TemperatureSeriesAnalysis {
         else {
             double idx = 0;
             double distance1 = Math.abs(temperatureSeries[0] - tempValue);
-            for(int i = 1; i < temperatureSeries.length; i++) {
+            for (int i = 1; i < temperatureSeries.length; i++) {
                 double distance2 = Math.abs(temperatureSeries[i] - tempValue);
-                if(distance1 > distance2) {
+                if (distance1 > distance2) {
                     idx = temperatureSeries[i];
                     distance1 = distance2;
                 }
             }
             return idx;
-        }}
+        } }
 
     public double[] findTempsLessThen(double tempValue) {
         double[] newList1 = new double[temperatureSeries.length];
@@ -130,15 +128,15 @@ public class TemperatureSeriesAnalysis {
     }
 
     public double[] findTempsGreaterThen(double tempValue) {
-        int k =0;
+        int k = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if  (temperatureSeries[i] >= tempValue){
-                k++;}
+            if  (temperatureSeries[i] >= tempValue) {
+                k++ ; }
         }
         double[] newList1 = new double[k];
         int c = 0;
         for (int i = 0; i < temperatureSeries.length; i++) {
-            if(temperatureSeries[i] >= tempValue){
+            if (temperatureSeries[i] >= tempValue) {
                 newList1[c] = temperatureSeries[i];
                 c++;
             }
@@ -163,9 +161,9 @@ public class TemperatureSeriesAnalysis {
         for (int i = 0; i < temps.length; i++) {
             newTempSeries[i] = temps[i];
         }
-        for (int i = 0; i < this.temperatureSeries.length; i++){
+        for (int i = 0; i < this.temperatureSeries.length; i++) {
             newTempSeries[i+temps.length] = this.temperatureSeries[i];
         }
         numberTemperature = temperatureSeries.length + temps.length;
         return numberTemperature;
-    }}
+    } }
