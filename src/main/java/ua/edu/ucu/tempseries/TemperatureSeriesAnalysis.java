@@ -19,8 +19,7 @@ public class TemperatureSeriesAnalysis {
         for (double i: temperatureSeries) {
             if (i < -273) {
                 throw new InputMismatchException();
-            } }
-    }
+            } } }
 
     public double average() {
         if (temperatureSeries.length == 0) {
@@ -31,8 +30,7 @@ public class TemperatureSeriesAnalysis {
             }
             avarageNum = avarageNum / temperatureSeries.length;
             return avarageNum;
-        }
-    }
+        } }
 
     public double deviation() {
         if (temperatureSeries.length == 0) {
@@ -44,36 +42,33 @@ public class TemperatureSeriesAnalysis {
             double quadraticDeviation = //
                     Math.sqrt(sum / temperatureSeries.length);
             return Math.round(quadraticDeviation);
-        }
-    }
+        } }
 
     public double min() {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         } else {
-            double min1 = temperatureSeries[0];
+            min1 = temperatureSeries[0];
             for (int i = 1; i < temperatureSeries.length; i++) {
                 if (temperatureSeries[i] < min1) {
                     min1 = temperatureSeries[i];
                 }
             }
             return min1;
-        }
-    }
+        } }
 
     public double max() {
         if (temperatureSeries.length == 0) {
             throw new IllegalArgumentException();
         } else {
-            double max1 = temperatureSeries[0];
+            max1 = temperatureSeries[0];
             for (int i = 1; i < temperatureSeries.length; i++) {
                 if (temperatureSeries[i] > max1) {
                     max1 = temperatureSeries[i];
                 }
             }
             return max1;
-        }
-    }
+        } }
 
     public double findTempClosestToZero() {
         if (temperatureSeries.length == 0) {
@@ -89,8 +84,7 @@ public class TemperatureSeriesAnalysis {
                 }
             }
             return closestToZero;
-        }
-    }
+        } }
 
     public double findTempClosestToValue(double tempValue) {
         if (temperatureSeries.length == 0) {
@@ -123,9 +117,7 @@ public class TemperatureSeriesAnalysis {
         for (int i = 0; i < newList2.length; i++) {
             newList2[i] = newList1[i];
         }
-        return newList2;
-
-    }
+        return newList2; }
 
     public double[] findTempsGreaterThen(double tempValue) {
         int k = 0;
@@ -152,12 +144,12 @@ public class TemperatureSeriesAnalysis {
                     new TempSummaryStatistics(this.average(), this.deviation(),
                     this.min(), this.max());
             return summaryStatistics;
-        }
-    }
+        } }
 
     public int addTemps(double... temps) {
-        double[] newTempSeries = new double[Math.max( //
-                temperatureSeries.length+temps.length, temperatureSeries.length * 2)];
+        double[] newTempSeries = new double[Math.max(//
+                temperatureSeries.length+temps.length,//
+                temperatureSeries.length * 2)];
         for (int i = 0; i < temps.length; i++) {
             newTempSeries[i] = temps[i];
         }
